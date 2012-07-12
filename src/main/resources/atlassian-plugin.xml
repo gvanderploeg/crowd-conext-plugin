@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+  </plugin-info>
+
+  <component-import key="renderer" interface="com.atlassian.templaterenderer.velocity.one.six.VelocityTemplateRenderer" />
+
+  <!-- just for testing that the plugin is alive -->
+  <servlet name="shib-group-plugin" class="org.surfnet.crowd.FormServlet" key="form">
+    <url-pattern>/shib-group-plugin/form</url-pattern>
+  </servlet>
+
+  <!--
+  <rest key="shibGroupMapping" path="/groupmapping" version="1.0">
+    <description>Provides group mapping services.</description>
+  </rest>
+  -->
+
+  <web-item name="Group Mapping" i18n-name-key="group-mapping.name"
+            key="group-mapping1" section="topnav" weight="50">
+    <description key="group-mapping.description">The Group Mapping Plugin</description>
+    <label key="Group mapping" /><!-- No i18n in Crowd -->
+    <link linkId="group-mapping-link">/console/plugins/shib-group-plugin/form</link>
+  </web-item>
+
+</atlassian-plugin>
