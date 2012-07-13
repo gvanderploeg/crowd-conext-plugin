@@ -64,7 +64,7 @@ public class ConfigurationFormServlet extends HttpServlet {
             (List<GroupMapping>) ConextConfig.mappingsFromString((String) settings.get(SETTING_MAPPING)));
       }
     });
-    LOG.debug("fetched settings from plugin settings: " + c);
+    LOG.info("fetched settings from plugin settings: " + c);
     model.put("config", c);
     renderer.render("form.vm", model, res.getWriter());
   }

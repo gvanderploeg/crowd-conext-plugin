@@ -16,7 +16,7 @@
   <component-import
     key="userManager" interface="com.atlassian.sal.api.user.UserManager" />
 
-  <servlet-filter key="authfilter" class="org.surfnet.crowd.AuthorizationFilter">
+  <servlet-filter key="authfilter" class="org.surfnet.crowd.AdminAuthorizationFilter">
     <url-pattern>/plugins/servlet/conext/*</url-pattern>
     <init-param>
       <param-name>redirectUri</param-name>

@@ -66,6 +66,11 @@
         <scope>test</scope>
         <version>1.5.8</version>
       </dependency>
+      <dependency>
+        <groupId>com.eduix.crowd</groupId>
+        <artifactId>shibboleth-filter</artifactId>
+        <version>1.0.211</version>
+      </dependency>
     </dependencies>
     <build>
         <plugins>

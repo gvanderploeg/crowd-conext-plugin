@@ -22,13 +22,13 @@ import org.slf4j.LoggerFactory;
  *
  * @author Geert van der Ploeg
  */
-public class AuthorizationFilter implements Filter {
+public class AdminAuthorizationFilter implements Filter {
 
-  private final static Logger LOG = LoggerFactory.getLogger(AuthorizationFilter.class);
+  private final static Logger LOG = LoggerFactory.getLogger(AdminAuthorizationFilter.class);
 
   private UserManager userManager;
 
-  public AuthorizationFilter(UserManager userManager) {
+  public AdminAuthorizationFilter(UserManager userManager) {
     this.userManager = userManager;
   }
 

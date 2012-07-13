@@ -9,7 +9,8 @@
 <form id="admin" class="aui" method="POST">
   <div>
     <label for="apiUrl">Conext API URL (including api version):</label>
-    <input type="text" id="apiUrl" name="apiUrl" class="text" value="$context.config.apiKey" placeholder="http://api.openconext.example.com/v1">
+    <input type="text" id="apiUrl" name="apiUrl" class="text"
+           value="$context.config.apiUrl" placeholder="http://api.openconext.example.com/v1">
   </div>
   <div>
     <label for="apiKey">API key</label>
@@ -25,9 +26,6 @@
     <label for="groupMapping">Group mapping</label>
     <textarea  id="groupMapping" name="groupMapping" class="text">$context.config.groupMappingAsString</textarea>
   </div>
-  <pre>
-    $context.config.groupMappingAsString
-  </pre>
   <div>
     <input type="submit" value="Save" class="button">
   </div>
