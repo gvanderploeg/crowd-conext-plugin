@@ -1,22 +1,39 @@
+<!doctype html>
 <html>
 <head>
-  <title>XProduct Admin</title>
+  <title>Conext configuration</title>
   <meta name="decorator" content="atl.admin">
   $webResourceManager.requireResource("com.atlassian.auiplugin:ajs")
 </head>
 <body>
-<form id="admin" class="aui">
+<form id="admin" class="aui" method="POST">
   <div>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" class="text">
+    <label for="apiUrl">Conext API URL (including api version):</label>
+    <input type="text" id="apiUrl" name="apiUrl" class="text" value="$context.config.apiKey" placeholder="http://api.openconext.example.com/v1">
   </div>
   <div>
-    <label for="time">Time:</label>
-    <input type="text" id="time" name="time" class="text">
+    <label for="apiKey">API key</label>
+    <input type="text" id="apiKey" name="apiKey" class="text" value="$context.config.apiKey">
   </div>
+
+  <div>
+    <label for="apiSecret">API secret</label>
+    <input type="text" id="apiSecret" name="apiSecret" class="text" value="$context.config.apiSecret">
+  </div>
+
+  <div>
+    <label for="groupMapping">Group mapping</label>
+    <textarea  id="groupMapping" name="groupMapping" class="text">$context.config.groupMappingAsString</textarea>
+  </div>
+  <pre>
+    $context.config.groupMappingAsString
+  </pre>
   <div>
     <input type="submit" value="Save" class="button">
   </div>
 </form>
+<script type="text/javascript">
+  // http://localhost:4990/crowd/rest/usermanagement/1/search.json?entity-type=group
+</script>
 </body>
 </html>

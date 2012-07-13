@@ -2,6 +2,9 @@ package org.surfnet.crowd.model;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+
 public class GroupMapping implements Serializable {
 
   private static final long serialVersionUID = 0L;
@@ -28,5 +31,9 @@ public class GroupMapping implements Serializable {
 
   public void setCrowdGroupName(String crowdGroupName) {
     this.crowdGroupName = crowdGroupName;
+  }
+
+  public String toString() {
+    return new ReflectionToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).toString();
   }
 }
