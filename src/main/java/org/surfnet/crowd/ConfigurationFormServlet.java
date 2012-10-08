@@ -38,13 +38,16 @@ public class ConfigurationFormServlet extends HttpServlet {
     this.renderer = renderer;
     this.settingsFactory = settingsFactory;
     this.transactionTemplate = transactionTemplate;
+
+    LOG.info("Constructor of servlet. SettingsFactory: {}, transactionTemplate: {}", settingsFactory, transactionTemplate);
+
   }
 
-  private final static String SETTING_BASE = "org.surfnet.crowd.conext";
-  private final static String SETTING_APIURL = SETTING_BASE + ".apiUrl";
-  private final static String SETTING_APIKEY = SETTING_BASE + ".apiKey";
-  private final static String SETTING_APISECRET = SETTING_BASE + ".apiSecret";
-  private final static String SETTING_MAPPING = SETTING_BASE + ".mapping";
+  public final static String SETTING_BASE = "org.surfnet.crowd.conext";
+  public final static String SETTING_APIURL = SETTING_BASE + ".apiUrl";
+  public final static String SETTING_APIKEY = SETTING_BASE + ".apiKey";
+  public final static String SETTING_APISECRET = SETTING_BASE + ".apiSecret";
+  public final static String SETTING_MAPPING = SETTING_BASE + ".mapping";
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

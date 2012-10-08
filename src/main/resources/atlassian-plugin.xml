@@ -28,12 +28,12 @@
     <url-pattern>/conext/configure</url-pattern>
   </servlet>
 
-  <!--
-  <rest key="groupMapping" path="/conext" version="1.0">
-    <description>Provides group mapping services.</description>
-  </rest>
-  -->
 
+  <rest key="configuration" path="/conext-configuration" version="1.0">
+    <description>Provides read-only view on configuration.</description>
+  </rest>
+
+  <!-- button in Crowd web interface navigation -->
   <web-item name="Conext" i18n-name-key="group-mapping.name" key="group-mapping1" section="topnav" weight="50">
     <description key="group-mapping.description">Conext plugin</description>
     <label key="Conext" /><!-- No i18n in Crowd -->

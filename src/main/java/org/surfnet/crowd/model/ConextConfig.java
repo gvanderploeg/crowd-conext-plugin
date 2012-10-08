@@ -3,19 +3,28 @@ package org.surfnet.crowd.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@XmlRootElement
 public class ConextConfig {
 
+  @XmlElement
   private String apiUrl;
+  @XmlElement
   private String apiKey;
+  @XmlElement
   private String apiSecret;
 
+  @XmlElement
   private List<GroupMapping> groupmappings = new ArrayList<GroupMapping>();
+
   private static final Logger LOG = LoggerFactory.getLogger(ConextConfig.class);
 
   public ConextConfig(String apiUrl, String apiKey, String apiSecret, List<GroupMapping> groupmappings) {
