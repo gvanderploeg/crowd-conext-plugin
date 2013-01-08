@@ -34,6 +34,7 @@
         <groupId>javax.ws.rs</groupId>
         <artifactId>jsr311-api</artifactId>
         <version>1.1</version>
+        <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>com.atlassian.sal</groupId>
@@ -51,7 +52,7 @@
         <groupId>com.atlassian.templaterenderer</groupId>
         <artifactId>atlassian-template-renderer-api</artifactId>
         <version>1.1.1</version>
-        <scope>provided</scope>
+        <scope>compile</scope>
       </dependency>
 
       <dependency>
@@ -123,6 +124,6 @@
     <properties>
         <crowd.version>2.3.4</crowd.version>
         <crowd.data.version>2.2.2</crowd.data.version>
-        <amps.version>3.11</amps.version>
+        <amps.version>4.1.1</amps.version>
     </properties>
 </project>

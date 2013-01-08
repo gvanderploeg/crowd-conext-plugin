@@ -16,6 +16,7 @@ import org.surfnet.crowd.model.ConextConfig;
 import static org.surfnet.crowd.ConfigurationFormServlet.SETTING_APIKEY;
 import static org.surfnet.crowd.ConfigurationFormServlet.SETTING_APISECRET;
 import static org.surfnet.crowd.ConfigurationFormServlet.SETTING_APIURL;
+import static org.surfnet.crowd.ConfigurationFormServlet.SETTING_CALLBACKURL;
 import static org.surfnet.crowd.ConfigurationFormServlet.SETTING_MAPPING;
 
 @Path("/")
@@ -25,10 +26,6 @@ public class GroupMappingResource {
 
   private PluginSettingsFactory settingsFactory;
   private TransactionTemplate transactionTemplate;
-
-  public GroupMappingResource() {
-    LOG.info("Constructor no-args");
-  }
 
   public GroupMappingResource(PluginSettingsFactory settingsFactory, TransactionTemplate transactionTemplate) {
     LOG.info("Constructor. SettingsFactory: {}, transactionTemplate: {}", settingsFactory, transactionTemplate);
@@ -47,12 +44,16 @@ public class GroupMappingResource {
 
       @Override
       public Object doInTransaction() {
-        return new ConextConfig(
+        ConextConfig conextConfig = new ConextConfig(
           StringUtils.defaultString((String) settings.get(SETTING_APIURL)),
+          StringUtils.defaultString((String) settings.get(SETTING_CALLBACKURL)),
           StringUtils.defaultString((String) settings.get(SETTING_APIKEY)),
           StringUtils.defaultString((String) settings.get(SETTING_APISECRET)),
           ConextConfig.mappingsFromString((String) settings.get(SETTING_MAPPING)));
+        LOG.info("fetched settings from plugin settings: " + conextConfig);
+        return conextConfig;
       }
     });
+
   }
 }

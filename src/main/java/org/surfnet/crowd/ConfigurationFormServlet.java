@@ -2,7 +2,6 @@ package org.surfnet.crowd;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -15,12 +14,10 @@ import com.atlassian.sal.api.pluginsettings.PluginSettingsFactory;
 import com.atlassian.sal.api.transaction.TransactionCallback;
 import com.atlassian.sal.api.transaction.TransactionTemplate;
 import com.atlassian.templaterenderer.TemplateRenderer;
-
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.surfnet.crowd.model.ConextConfig;
-import org.surfnet.crowd.model.GroupMapping;
 
 /**
  * Form for configuring Conext properties.
@@ -45,6 +42,7 @@ public class ConfigurationFormServlet extends HttpServlet {
 
   public final static String SETTING_BASE = "org.surfnet.crowd.conext";
   public final static String SETTING_APIURL = SETTING_BASE + ".apiUrl";
+  public final static String SETTING_CALLBACKURL = SETTING_BASE + ".callbackUrl";
   public final static String SETTING_APIKEY = SETTING_BASE + ".apiKey";
   public final static String SETTING_APISECRET = SETTING_BASE + ".apiSecret";
   public final static String SETTING_MAPPING = SETTING_BASE + ".mapping";
@@ -62,9 +60,10 @@ public class ConfigurationFormServlet extends HttpServlet {
 
         return new ConextConfig(
             StringUtils.defaultString((String) settings.get(SETTING_APIURL)),
+            StringUtils.defaultString((String) settings.get(SETTING_CALLBACKURL)),
             StringUtils.defaultString((String) settings.get(SETTING_APIKEY)),
             StringUtils.defaultString((String) settings.get(SETTING_APISECRET)),
-            (List<GroupMapping>) ConextConfig.mappingsFromString((String) settings.get(SETTING_MAPPING)));
+          ConextConfig.mappingsFromString((String) settings.get(SETTING_MAPPING)));
       }
     });
     LOG.info("fetched settings from plugin settings: " + c);
@@ -75,11 +74,12 @@ public class ConfigurationFormServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
     String apiKey = req.getParameter("apiKey");
+    String callbackUrl = req.getParameter("callbackUrl");
     String apiSecret = req.getParameter("apiSecret");
     String apiUrl = req.getParameter("apiUrl");
     String groupMapping = req.getParameter("groupMapping");
 
-    final ConextConfig c = new ConextConfig(apiUrl, apiKey, apiSecret, ConextConfig.mappingsFromString(groupMapping));
+    final ConextConfig c = new ConextConfig(apiUrl, callbackUrl, apiKey, apiSecret, ConextConfig.mappingsFromString(groupMapping));
     LOG.info("About to store settings: " + c);
 
 
@@ -91,6 +91,7 @@ public class ConfigurationFormServlet extends HttpServlet {
         settings.put(SETTING_APIKEY, c.getApiKey());
         settings.put(SETTING_APISECRET, c.getApiSecret());
         settings.put(SETTING_APIURL, c.getApiUrl());
+        settings.put(SETTING_CALLBACKURL, c.getCallbackUrl());
         settings.put(SETTING_MAPPING, c.getGroupMappingAsString());
         return null;
       }

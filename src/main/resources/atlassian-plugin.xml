@@ -8,13 +8,20 @@
   </plugin-info>
 
   <component-import
-      key="renderer" interface="com.atlassian.templaterenderer.velocity.one.six.VelocityTemplateRenderer" />
+      key="renderer" interface="com.atlassian.templaterenderer.TemplateRenderer" />
   <component-import
       key="settingsFactory" interface="com.atlassian.sal.api.pluginsettings.PluginSettingsFactory" />
   <component-import
       key="transactionTemplate" interface="com.atlassian.sal.api.transaction.TransactionTemplate" />
   <component-import
     key="userManager" interface="com.atlassian.sal.api.user.UserManager" />
+
+  <!--
+  Protect the REST endpoint from unauthenticated access. This is just a Basic Authentication filter.
+  -->
+  <servlet-filter key="restauthfilter" class="org.surfnet.crowd.RestAuthenticationFilter">
+    <url-pattern>/rest/conext-configuration/*</url-pattern>
+  </servlet-filter>
 
   <servlet-filter key="authfilter" class="org.surfnet.crowd.AdminAuthorizationFilter">
     <url-pattern>/plugins/servlet/conext/*</url-pattern>
