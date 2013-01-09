@@ -22,6 +22,10 @@ To build this plugin, follow the regular Atlassian Plugin SDK steps:
 The plugin offers a - very basic - configuration interface, reachable from the regular Crowd management interface.
 Click on the 'Conext' item in the navigation bar.
 
+## Decisions during development
+
+* Domain classes are separated from the rest of the plugin, in another module. This is because the Shibboleth-filter modules also needs these domain classes. Simply using the crowd-conext-plugin as a dependency does not work out because Crowd would then try to activate the plugin.
+
 ## Disclaimer
 
 See the NOTICE file

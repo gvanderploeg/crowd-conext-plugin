@@ -12,6 +12,11 @@
     <name>Crowd Conext plugin</name>
     <packaging>atlassian-plugin</packaging>
     <dependencies>
+      <dependency>
+        <groupId>org.surfnet.crowd</groupId>
+        <artifactId>crowd-conext-domain</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+      </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
