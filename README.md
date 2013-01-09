@@ -12,10 +12,9 @@ SURFconext: [http://www.surfconext.nl](http://www.surfconext.nl)
 To build this plugin, follow the regular Atlassian Plugin SDK steps:
 - Download the SDK, set your PATH-variable to include the SDK bin path
 - Clone this repository
-- cd into the repository
+- cd into the repository, and cd crowd-conext-plugin
 - run atlas-package
-- run atlas-run-standalone --product=crowd
-- in another window, run atlas-install-plugin (from within the repository directory)
+- run atlas-run
 
 ## Configuration
 
@@ -25,6 +24,7 @@ Click on the 'Conext' item in the navigation bar.
 ## Decisions during development
 
 * Domain classes are separated from the rest of the plugin, in another module. This is because the Shibboleth-filter modules also needs these domain classes. Simply using the crowd-conext-plugin as a dependency does not work out because Crowd would then try to activate the plugin.
+* Configuration is readable using the REST (read only) interface. There is no more direct way of sharing the settings into the main crowd component.
 
 ## Disclaimer
 
